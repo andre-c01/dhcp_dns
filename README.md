@@ -196,23 +196,24 @@ Config File: `/etc/bind/prof.pdl.lan`
 
 ```shell
 $TTL 86400
-@    IN    SOA    server.prof.pdl. root.prof.pdl. (
-    20210420        ;Serial
-        3600        ;Refresh
-        1800        ;Retry
-        604800        ;Expire
-        86400        ;Minimum TTL
+@       IN      SOA     server.prof.pdl. root.prof.pdl. (
+        20210420        ;Serial
+        3600            ;Refresh
+        1800            ;Retry
+        604800          ;Expire
+        86400           ;Minimum TTL
 )
 
-    IN    NS    server.prof.pdl.
-    IN    A    192.168.100.254
-    IN    MX 10    server.prof.pdl.
+        IN      NS      server.prof.pdl.
+        IN      A       192.168.100.254
+        IN      MX 10   server.prof.pdl.
 
-server    IN    A    192.168.100.254
-www    IN    A    192.168.100.221
+server  IN      A       192.168.100.254
+www     IN      A       192.168.100.221
 
-ftp    IN    CNAME    server.prof.pdl.
-mail    IN    CNAME    server.prof.pdl.
+ftp     IN      CNAME   server.prof.pdl.
+mail    IN      CNAME   server.prof.pdl.
+
 ```
 
 ### DNS REVERSE Zone prof.pdl
@@ -221,18 +222,18 @@ Config File: `/etc/bind/100.168.192.db`
 
 ```shell
 $TTL 86400
-@    IN    SOA    server.prof.pdl. root.prof.pdl. (
-        20210420    ;Serial
-        3600        ;Refresh
-        1800        ;Retry
-        604800        ;Expire
-        86400        ;Minimum TTL
+@       IN      SOA     serverprof.pdl. root.prof.pdl. (
+                20210420        ;Serial
+                3600            ;Refresh
+                1800            ;Retry
+                604800          ;Expire
+                86400           ;Minimum TTL
 )
 
-    IN    NS    server.prof.pdl.
+        IN      NS      server.prof.pdl.
 
-220    IN    PTR    server.prof.pdl.
-221    IN    PTR    www.prof.pdl.
+220     IN      PTR     server.prof.pdl.
+221     IN      PTR     www.prof.pdl.
 ```
 
 `systemctl restart named`
