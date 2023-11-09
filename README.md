@@ -13,7 +13,7 @@ Internal <|--|> Client
 Client : Dynamic Ip
 ```
 
-# Server NICs Setup
+# NICs Setup
 
 Before booting your machine set the default network interface to `bridge` and a second one as `internal`
 
