@@ -17,11 +17,7 @@ Internal <|--|> Client
 Client : Dynamic Ip
 ```
 
----
-
 ## Sudo
-
----
 
 ## Update , Upgrade & Install
 
@@ -31,19 +27,13 @@ Client : Dynamic Ip
 
 `sudo apt install «package»` : Install a Package
 
----
-
 ## Users
 
 `sudo add «username»` : Add a User
 
 `sudo usermod -aG «groupname» «username»` : Add a User to Group
 
----
-
 ## Permissions
-
----
 
 ## Network Config (Netplan)
 
@@ -71,8 +61,6 @@ network:
 
 `ip a` : Show Network Details
 
----
-
 ## Services (Systemd)
 
 `systemctl -t service` : List With Status of All System Services
@@ -89,15 +77,11 @@ network:
 
 `systemctl reload «servicename»` : Reload Service
 
----
-
 ## IPV4 Forward
 
 Uncomment `net.ipv4.ip_forward=1` from `/etc/sysctl.conf`
 
 `sudo sysctl -p` : Load settings from `/etc/sysctl.conf`
-
----
 
 ## Iptables
 
@@ -106,8 +90,6 @@ Uncomment `net.ipv4.ip_forward=1` from `/etc/sysctl.conf`
 `sudo apt install iptables-persistent` : Install iptables-persistent
 
 `iptables-save > /etc/iptables/rules.v4` : Save Iptables Rules
-
----
 
 ## DHCP Server (isc-dhcp-server)
 
@@ -129,17 +111,15 @@ ddns-update-style none;
 authoritative;
 
 subnet 192.168.100.0 netmask 255.255.255.0 {
-	option routers 192.168.100.254;
-	option subnet-mask 255.255.255.0;
-	range dynamic-bootp 192.168.100.1 192.168.100.20;
+    option routers 192.168.100.254;
+    option subnet-mask 255.255.255.0;
+    range dynamic-bootp 192.168.100.1 192.168.100.20;
 }
 ```
 
 `sudo systemctl restart isc-dhcp-server ` 
 
 `sudo systemctl status isc-dhcp-server`
-
----
 
 ## DNS Server (BIND)
 
@@ -155,15 +135,15 @@ Config file: `/etc/bind/named.conf.internal-zones`
 
 ```shell
 zone "prof.pdl" IN {
-	type master;
-	file "/etc/bind/prof.pdl.lan";
-	allow-update { none; };
+    type master;
+    file "/etc/bind/prof.pdl.lan";
+    allow-update { none; };
 };
 
 zone "100.168.192.in-addr.arpa" IN {
-	type master;
-	file "/etc/bind/100.168.192.db";
-	allow-update { none; };
+    type master;
+    file "/etc/bind/100.168.192.db";
+    allow-update { none; };
 };
 ```
 
@@ -178,17 +158,17 @@ acl internal-network {
 };
 
 options {
-	directory "/var/cache/bind";
+    directory "/var/cache/bind";
 
-	dnssec-validation auto;
+    dnssec-validation auto;
 
-	listen-on-v6 { any; };
+    listen-on-v6 { any; };
 
-	allow-query { localhost; internal-network; };
-	
-	allow-transfer { localhost; };
+    allow-query { localhost; internal-network; };
 
-	recursion yes;
+    allow-transfer { localhost; };
+
+    recursion yes;
 };
 ```
 
@@ -198,23 +178,23 @@ Config File: `/etc/bind/prof.pdl.lan`
 
 ```shell
 $TTL 86400
-@	IN	SOA	server.prof.pdl. root.prof.pdl. (
-	20210420        ;Serial
-        3600		;Refresh
-        1800		;Retry
-        604800		;Expire
-        86400		;Minimum TTL
+@    IN    SOA    server.prof.pdl. root.prof.pdl. (
+    20210420        ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800        ;Expire
+        86400        ;Minimum TTL
 )
 
-	IN	NS	server.prof.pdl.
-	IN	A	192.168.100.254
-	IN	MX 10	server.prof.pdl.
+    IN    NS    server.prof.pdl.
+    IN    A    192.168.100.254
+    IN    MX 10    server.prof.pdl.
 
-server	IN	A	192.168.100.254
-www	IN	A	192.168.100.221
+server    IN    A    192.168.100.254
+www    IN    A    192.168.100.221
 
-ftp	IN	CNAME	server.prof.pdl.
-mail	IN	CNAME	server.prof.pdl.
+ftp    IN    CNAME    server.prof.pdl.
+mail    IN    CNAME    server.prof.pdl.
 ```
 
 ### DNS REVERSE Zone prof.pdl
@@ -223,18 +203,18 @@ Config File: `/etc/bind/100.168.192.db`
 
 ```shell
 $TTL 86400
-@	IN	SOA	server.prof.pdl. root.prof.pdl. (
-		20210420	;Serial
-		3600		;Refresh
-		1800		;Retry
-		604800		;Expire
-		86400		;Minimum TTL
+@    IN    SOA    server.prof.pdl. root.prof.pdl. (
+        20210420    ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800        ;Expire
+        86400        ;Minimum TTL
 )
 
-	IN	NS	server.prof.pdl.
+    IN    NS    server.prof.pdl.
 
-220	IN	PTR	server.prof.pdl.
-221	IN	PTR	www.prof.pdl.
+220    IN    PTR    server.prof.pdl.
+221    IN    PTR    www.prof.pdl.
 ```
 
 `systemctl restart named`
