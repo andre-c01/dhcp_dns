@@ -73,7 +73,7 @@ For this guide make sure to do `apt update` before trying to install any package
 
 Default config file: `/etc/netplan/00-installer-config.yaml`
 
-Note! : Make a backup of the config file with : `mv /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bk`
+`mv /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bk` : Make a backup of the config file with
 
 Replace the config file with:
 
@@ -91,6 +91,8 @@ network:
   version: 2
 ```
 
+! Check the name of the interfaces and the ip set for the internal one.
+
 `netplan apply` : Update & Apply Config
 
 `ip a` : Show Network Details
@@ -103,7 +105,7 @@ Uncomment `net.ipv4.ip_forward=1` from `/etc/sysctl.conf`
 
 ## Iptables
 
-`iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE`
+`iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE` : Route all trafic through enp0s3
 
 `apt install iptables-persistent` : Install iptables-persistent
 
@@ -113,7 +115,7 @@ Uncomment `net.ipv4.ip_forward=1` from `/etc/sysctl.conf`
 
 `apt install isc-dhcp-server` : Install The DHCP Server
 
-Note! : Make Backup of Config File : `mv /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.bk`
+`mv /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.bk` : Make Backup of Config File
 
 Config file: `/etc/dhcp/dhcpd.conf`
 
@@ -141,7 +143,7 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 
 ## DNS Server (BIND)
 
-`apt install bind9 bind9utils` :
+`apt install bind9 bind9utils`
 
 `/etc/bind/named.conf` : Config BIND (Internal Network)
 
