@@ -53,6 +53,22 @@ For this guide make sure to do `apt update` before trying to install any package
 
 ## Permissions
 
+## Services (Systemd)
+
+`systemctl -t service` : List With Status of All System Services
+
+`systemctl list-unit-files -t service`
+
+`systemctl status «servicename»` : Check Status of Service
+
+`systemctl stop «servicename»` : Stop Service
+
+`systemctl start «servicename»` : Start Service
+
+`systemctl restart «servicename»` : Restart Service
+
+`systemctl reload «servicename»` : Reload Service
+
 ## Network Config (Netplan)
 
 Default config file: `/etc/netplan/00-installer-config.yaml`
@@ -78,22 +94,6 @@ network:
 `netplan apply` : Update & Apply Config
 
 `ip a` : Show Network Details
-
-## Services (Systemd)
-
-`systemctl -t service` : List With Status of All System Services
-
-`systemctl list-unit-files -t service`
-
-`systemctl status «servicename»` : Check Status of Service
-
-`systemctl stop «servicename»` : Stop Service
-
-`systemctl start «servicename»` : Start Service
-
-`systemctl restart «servicename»` : Restart Service
-
-`systemctl reload «servicename»` : Reload Service
 
 ## IPV4 Forward
 
