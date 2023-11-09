@@ -29,19 +29,25 @@ Do all of the following in this terminal, utilize the **copy** and **paste** fun
 
 ## Sudo
 
+**Sudo** is used to elevate the privileges of the current user to essentially root.
+
+`sudo «command»`
+
+For this guide make sure to **login to root** with `sudo su`
+
 ## Update , Upgrade & Install
 
-`sudo apt update` : Update Repos
+`apt update` : Update Repos
 
-`sudo apt upgrade` : Upgrade All Packages
+`apt upgrade` : Upgrade All Packages
 
-`sudo apt install «package»` : Install a Package
+`apt install «package»` : Install a Package
 
 ## Users
 
-`sudo add «username»` : Add a User
+`add «username»` : Add a User
 
-`sudo usermod -aG «groupname» «username»` : Add a User to Group
+`usermod -aG «groupname» «username»` : Add a User to Group
 
 ## Permissions
 
@@ -91,19 +97,19 @@ network:
 
 Uncomment `net.ipv4.ip_forward=1` from `/etc/sysctl.conf`
 
-`sudo sysctl -p` : Load settings from `/etc/sysctl.conf`
+`sysctl -p` : Load settings from `/etc/sysctl.conf`
 
 ## Iptables
 
-`sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE`
+`iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE`
 
-`sudo apt install iptables-persistent` : Install iptables-persistent
+`apt install iptables-persistent` : Install iptables-persistent
 
 `iptables-save > /etc/iptables/rules.v4` : Save Iptables Rules
 
 ## DHCP Server (isc-dhcp-server)
 
-`sudo apt install isc-dhcp-server` : Install The DHCP Server
+`apt install isc-dhcp-server` : Install The DHCP Server
 
 Note! : Make Backup of Config File : `cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.bk`
 
@@ -127,13 +133,13 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 }
 ```
 
-`sudo systemctl restart isc-dhcp-server ` 
+`systemctl restart isc-dhcp-server ` 
 
-`sudo systemctl status isc-dhcp-server`
+`systemctl status isc-dhcp-server`
 
 ## DNS Server (BIND)
 
-`sudo apt install bind9 bind9utils` :
+`apt install bind9 bind9utils` :
 
 `/etc/bind/named.conf` : Config BIND (Internal Network)
 
