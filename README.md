@@ -43,6 +43,8 @@ For this guide make sure to **login to root** with `sudo su`
 
 `apt install «package»` : Install a Package
 
+For this guide make sure to do `apt update` before trying to install any package.
+
 ## Users
 
 `add «username»` : Add a User
