@@ -21,11 +21,19 @@ Before booting your machine set the default network interface to `bridge` and a 
 
 After booting the vm go to `/etc/ssh/sshd_config` and uncomment `PasswordAuthentication yes` . Save and get the vm ip with `ip a`.
 
+## Using Solar Putty
+
 Download & open "Solar-PuTTY.exe" from the repo and add a new ssh session with your **username** and **ip**.
 
-Do all of the following in this terminal, utilize the **copy** and **paste** function.
+## Using Tabby
 
-**<u>Do Not Write Code. Copy It !</u>**
+Download Tabby from [here](https://github.com/Eugeny/tabby/releases/download/v1.0.201/tabby-1.0.201-portable-x64.zip) and do `ssh «username»@«ip»` , enter `yes` followed by the password.
+
+## 
+
+**Do all of the following in this terminal, utilize the copy and paste function.**
+
+**Do Not Write Code. Copy It !**
 
 ## Sudo
 
