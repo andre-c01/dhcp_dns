@@ -113,7 +113,7 @@ Uncomment `net.ipv4.ip_forward=1` from `/etc/sysctl.conf`
 
 `apt install isc-dhcp-server` : Install The DHCP Server
 
-Note! : Make Backup of Config File : `cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.bk`
+Note! : Make Backup of Config File : `mv /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.bk`
 
 Config file: `/etc/dhcp/dhcpd.conf`
 
