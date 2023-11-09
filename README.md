@@ -137,6 +137,8 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 }
 ```
 
+! Change IPs , domain name and the range of IPs to be used.
+
 `systemctl restart isc-dhcp-server ` 
 
 `systemctl status isc-dhcp-server`
@@ -167,6 +169,8 @@ zone "100.168.192.in-addr.arpa" IN {
 };
 ```
 
+! Change IPs & domain name (leave the `.lan` at the end).
+
 ### Bind Options
 
 Config file: `/etc/bind/named.conf.options`
@@ -191,6 +195,8 @@ options {
     recursion yes;
 };
 ```
+
+! Change IPs.
 
 ### DNS Zones (Zone prof.pdl)
 
@@ -218,6 +224,8 @@ mail    IN      CNAME   server.prof.pdl.
 
 ```
 
+! Change IPs & domain name. Pay attention to the name of the file, it must be your domain name followed by `.lan`.
+
 ### DNS REVERSE Zone prof.pdl
 
 Config File: `/etc/bind/100.168.192.db`
@@ -237,6 +245,8 @@ $TTL 86400
 220     IN      PTR     server.prof.pdl.
 221     IN      PTR     www.prof.pdl.
 ```
+
+! Change the domain name. Pay attention to the name of the file, it must be the 3 first segments of your IP in reverse followed by `.db`.
 
 `systemctl restart named`
 
