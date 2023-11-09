@@ -21,9 +21,9 @@ Before booting your machine set the default network interface to `bridge` and a 
 
 After booting the vm go to `/etc/ssh/sshd_config` and uncomment `PasswordAuthentication yes` . Save and get the vm ip with `ip a`.
 
-Download & open "Solar-PuTTY.exe" from the repo and add a new ssh session with your username and ip.
+Download & open "Solar-PuTTY.exe" from the repo and add a new ssh session with your **username** and **ip**.
 
-Do all of the following in this terminal, utilize the copy and paste function.
+Do all of the following in this terminal, utilize the **copy** and **paste** function.
 
 **<u>Do Not Write Code. Copy It !</u>**
 
