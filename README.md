@@ -92,7 +92,7 @@ network:
       dhcp4: true
     enp0s8:
       dhcp4: false
-      addresses: [192.168.100.254/24]
+      addresses: [192.168.4.254/24]
       nameservers:
         addresses: [127.0.0.1,8.8.8.8]
       dhcp6: false
@@ -129,7 +129,7 @@ Config file: `/etc/dhcp/dhcpd.conf`
 
 ```shell
 option domain-name "prof.pdl";
-option domain-name-servers 192.168.100.254, 8.8.8.8;
+option domain-name-servers 192.168.4.254, 8.8.8.8;
 
 default-lease-time 600;
 max-lease-time 7200;
@@ -138,10 +138,10 @@ ddns-update-style none;
 
 authoritative;
 
-subnet 192.168.100.0 netmask 255.255.255.0 {
-    option routers 192.168.100.254;
+subnet 192.168.4.0 netmask 255.255.255.0 {
+    option routers 192.168.4.254;
     option subnet-mask 255.255.255.0;
-    range dynamic-bootp 192.168.100.1 192.168.100.20;
+    range dynamic-bootp 192.168.4.1 192.168.4.20;
 }
 ```
 
@@ -170,9 +170,9 @@ zone "prof.pdl" IN {
     allow-update { none; };
 };
 
-zone "100.168.192.in-addr.arpa" IN {
+zone "4.168.192.in-addr.arpa" IN {
     type master;
-    file "/etc/bind/100.168.192.db";
+    file "/etc/bind/4.168.192.db";
     allow-update { none; };
 };
 ```
@@ -185,7 +185,7 @@ Config file: `/etc/bind/named.conf.options`
 
 ```shell
 acl internal-network {
-192.168.100.0/24;
+192.168.4.0/24;
 127.0.0.0/8;
 };
 
@@ -221,11 +221,11 @@ $TTL 86400
 )
 
         IN      NS      server.prof.pdl.
-        IN      A       192.168.100.254
+        IN      A       192.168.4.254
         IN      MX 10   server.prof.pdl.
 
-server  IN      A       192.168.100.254
-www     IN      A       192.168.100.221
+server  IN      A       192.168.4.254
+www     IN      A       192.168.4.221
 
 ftp     IN      CNAME   server.prof.pdl.
 mail    IN      CNAME   server.prof.pdl.
@@ -236,7 +236,7 @@ mail    IN      CNAME   server.prof.pdl.
 
 ### DNS REVERSE Zone prof.pdl
 
-Config File: `/etc/bind/100.168.192.db`
+Config File: `/etc/bind/4.168.192.db`
 
 ```shell
 $TTL 86400
