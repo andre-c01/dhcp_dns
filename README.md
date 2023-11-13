@@ -19,7 +19,15 @@ Before booting your machine set the default network interface to `bridge` and a 
 
 ## Seting Up & Using SSH
 
-After booting the vm go to `/etc/ssh/sshd_config` and uncomment `PasswordAuthentication yes` . Save and get the vm ip with `ip a`.
+Install sshd with `apt install ssh`
+
+> After booting the vm go to `/etc/ssh/sshd_config` and uncomment `PasswordAuthentication yes` . Save and get the vm ip with `ip a`.
+>
+> or do
+>
+> `sed -i '/PasswordAuthentication/s/^#//g /etc/ssh/sshd_config' 
+
+Then enable & start the service `systemctl enable sshd --now`
 
 ### Using Solar Putty
 
