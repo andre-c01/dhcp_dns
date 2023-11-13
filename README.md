@@ -12,6 +12,15 @@ Internal: DHCP
 Internal <|--|> Client
 Client : Dynamic Ip
 ```
+## :small_red_triangle_down: Using The Script :small_red_triangle_down:
+
+`sudo su`
+
+`git clone https://github.com/andre-c01/3933.git`
+
+`bash ./3933/run.bash`
+
+## :small_red_triangle_down: Using The Guide :small_red_triangle_down:
 
 ## NICs Setup
 
