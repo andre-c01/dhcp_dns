@@ -18,7 +18,7 @@ Client : Dynamic Ip
 
 `git clone https://github.com/andre-c01/3933.git`
 
-`bash ./3933/run.bash`
+`bash ./3933/run.bash -u`
 
 # :small_red_triangle_down: Using The Guide :small_red_triangle_down:
 
